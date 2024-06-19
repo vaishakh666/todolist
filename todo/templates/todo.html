@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {%  csrf_token %}
+        <label for="" >name</label>
+        <input type="text" name="name" value="{{abc.name}}">
+        <label for="" >description</label>
+        <input type="text" name="description"value="{{abc.description}}">
+        <button type="submit">submit</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th>name</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        {% for i in abc %}
+        <tr>
+           
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td><a href="{% url 'delete' i.id %}">delete</a></td>
+            <td><a href="{% url 'edit' i.id %}">edit</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+   
+</body>
+</html>
